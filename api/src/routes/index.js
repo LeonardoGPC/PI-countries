@@ -1,4 +1,6 @@
 const { Router } = require('express');
+const countries = require('./countries.js');
+const { Activity, Country } = require('../db.js');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -8,5 +10,29 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+router.use('/', countries);
+
+router.get('/cxa/:key', async function(req, res){
+    const { key } = req.params;
+    const all = await Country.findOne({
+        where: {ky: key},
+        include: Activity
+    })
+    res.json(all);
+})
+
+router.post('/activities', async function(req, res){
+    const { name, difficult, duration, season, countries} = req.body;
+    try{
+        const newActivity = await Activity.create({name, difficult, duration, season});
+        const activity = await Activity.findOne({where: {name: name}});
+        await activity.addCountry(countries);
+        res.json(newActivity);
+    }catch(e){  
+        res.json(e);
+    }
+})
+
+//Falta conectar las dos tablas
 
 module.exports = router;

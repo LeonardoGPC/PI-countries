@@ -1,0 +1,23 @@
+.main{
+    color: white;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    max-width: max-content;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.text{
+    display: grid;
+    align-items: center;
+}
+
+.img{
+    max-width: 250px;
+    max-height: 250px;
+}

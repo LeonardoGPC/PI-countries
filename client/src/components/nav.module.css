@@ -1,0 +1,40 @@
+.main{
+    background-color: rgb(40, 40, 40);
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.div_title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title{
+    padding-left: 20px;
+    font-size: 28px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.img{
+    max-width: 40px;
+    padding: 25px;
+}
+
+.list{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link{
+    padding: 0 25px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}

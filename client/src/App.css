@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.Bg_img{
+  width: 99.1vw;
+  height: 100vh;
+  position: fixed;
+  object-fit: cover;
+  filter: brightness(30%);
+  left: 0%;
+  z-index: -1000;
+}
