@@ -1,64 +1,66 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 import h from "./home.module.css";
 import Cards from "./cards";
-import Filter from "./filter";
-import Order from "./order";
-import { Outlet } from "react-router-dom";
+import Filter from "./Filtros/filter";
+import { getData, getCxa, getAct, getCounts } from '../redux/actions';
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Home({srch, setDtls, dtls}){
+function Home(){
 
-    const [data, setData] = useState();
-    const [find, setFind] = useState([]);
-    
-    useEffect(async () => {
-        await fetch('http://localhost:3001/countries')
-        .then(res => res.json())
-        .then(countries => {setData(oldCountries => countries)})
-        .catch(e => console.log(e))
-    }, [])
+    const dispatch = useDispatch();
+    const error = useSelector((state) => state.error);
 
-    useEffect(()=>{
-        if(data && srch.length != 0){
-        var resultadoDB = data.filter(e => {if(e.name.toString().toLowerCase().includes(srch.toString().toLowerCase())){
-            return e;
-        }})
-        setFind(resultadoDB);
-        } else {
-            setFind([])
-        }
-    }, [srch])
+    useEffect( ()=>{
+        dispatch(getCounts());
+        dispatch(getData());
+        dispatch(getCxa());
+        dispatch(getAct());
+    }, [dispatch])
 
-    if(srch == false || srch.length == 0){
     return(
         <div className={h.padre1}>
             <div className={h.padre2}>
                 <div className={h.filter}>
                     <Filter/>
-                    <Order/>
                 </div>
-                <div className={h.cards}>
-                    <Cards data={data} find={find} setDtls={setDtls} dtls={dtls}/>
-                </div>
+                {error ? <h1 className={h.error}>{error[0]}: <br/>{error[1]}</h1> : <div className={h.cards}>
+                    <Cards/>
+                </div>}
             </div>
-            <Outlet/>
         </div>
-    )} else if(find.length > 0){
-        return(
-            <div className={h.padre1}>
-                <div className={h.padre2}>
-                    <div className={h.cards}>
-                        <Cards data={data} find={find} setDtls={setDtls} dtls={dtls}/>
-                    </div>
-                </div>
-                <Outlet/>
-            </div>
-        )
-    } else {
-        return(
-            <div className={h.err}>
-                <h1>No se encontraron paises</h1>
-                <Outlet/>
-            </div>
-        )
-    }
+    )
+
+    // if((srch == false || srch.length == 0)){
+    // return(
+    //     <div className={h.padre1}>
+    //         <div className={h.padre2}>
+    //             <div className={h.filter}>
+    //                 <Filter/>
+    //             </div>
+    //             <div className={h.cards}>
+    //                 {/* <Cards data={data} find={find} setDtls={setDtls} dtls={dtls}/> */}
+    //                 <Cards srch={srch} setDtls={setDtls} dtls={dtls}/>
+    //             </div>
+    //         </div>
+    //     </div>
+    // )} else if(srch.length > 0){
+    //     return(
+    //         <div className={h.padre1}>
+    //             <div className={h.padre2}>
+    //                 <div className={h.cards}>
+    //                     {/* <Cards data={data} find={find} setDtls={setDtls} dtls={dtls}/> */}
+    //                     <Cards srch={srch} setDtls={setDtls} dtls={dtls}/>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     )
+    // } else {
+    //     return(
+    //         <div className={h.err}>
+    //             <h1>Cargando...</h1>
+    //         </div>
+    //     )
+    // }
 }
+
+export default Home;

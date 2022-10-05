@@ -1,0 +1,32 @@
+.filter{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.select{
+    width: 185px;
+    color: white;
+    font-size: 18px;
+    padding: 5px 5px;
+    outline: none;
+    background: rgba(133, 0, 173, 1);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: all 300ms;
+
+    animation: in 1s ease-in-out;
+}
+
+@keyframes in{
+    from{opacity: 0; filter: blur(3px); width: 0;}
+    to{opacity: 1; filter: blur(0); width: 185px;}
+}
+
+.select:focus,
+.select:hover{
+    background: rgb(173, 0, 226);
+    box-shadow: 0 0 10px rgb(195, 0, 255);
+}

@@ -12,6 +12,17 @@ const router = Router();
 
 router.use('/', countries);
 
+router.get('/cxa', async function(req, res){
+    try{
+        const cxa = await Country.findAll({
+        include: Activity
+        })
+        res.json(cxa)
+    }catch(e){
+        res.json(e);
+    }
+})
+
 router.get('/cxa/:key', async function(req, res){
     const { key } = req.params;
     const all = await Country.findOne({
@@ -19,6 +30,15 @@ router.get('/cxa/:key', async function(req, res){
         include: Activity
     })
     res.json(all);
+})
+
+router.get('/getActivities', async function(req, res){
+    try{
+        const activities = await Activity.findAll()
+        res.json(activities);
+    }catch(e){
+        res.json(e);
+    }
 })
 
 router.post('/activities', async function(req, res){
@@ -29,7 +49,7 @@ router.post('/activities', async function(req, res){
         await activity.addCountry(countries);
         res.json(newActivity);
     }catch(e){  
-        res.json(e);
+        res.json({});
     }
 })
 

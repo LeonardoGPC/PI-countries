@@ -1,25 +1,19 @@
-import { React, useState } from "react";
+import { React } from "react";
+import { search } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import sb from './searchBar.module.css';
 
-export default function SearchBar({setSrch}){
+export default function SearchBar(){
 
-    const [pais, setPais] = useState('');
+    const dispatch = useDispatch();
 
-    const onSubmit = e => {
-        e.preventDefault();
-        setSrch(pais)
-    }
-
-    const onChange = (e) => {
-        setSrch(e.target.value);
-        setPais(e.target.value);
+    const onTyping = e => {
+        dispatch(search(e.target.value))
     }
 
     return(
-        <div>
-            <form onSubmit={e => onSubmit(e)}>
-                <input type="text" placeholder="País..." name="searchBar" onChange={e => onChange(e)} autoComplete="off"/>
-                <input type="submit" name="button" value="Buscar"/>
-            </form>
+        <div className={sb.main}>
+            <input type="text" placeholder="País..." name="searchBar" autoComplete="off" className={sb.input} onChange={e => onTyping(e)}/>
         </div>
     )
 }

@@ -38,11 +38,44 @@
 }
 
 .Bg_img{
-  width: 99.1vw;
-  height: 100vh;
+  width: 100vw;
+  height: 110vh;
   position: fixed;
   object-fit: cover;
-  filter: brightness(30%);
+  filter: brightness(50%);
   left: 0%;
   z-index: -1000;
+}
+
+.dtls_home{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-left: 150px;
+}
+
+.activity_divide{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: 0px;
+}
+
+.activity_cards{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close_img{
+  position: relative;
+  left: 18px;
+  width: 50px;
+  height: 40px;
+  transition: all 300ms;
+}
+
+.close_img:hover{
+  filter: drop-shadow(0 0 5px white)
 }

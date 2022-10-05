@@ -1,0 +1,38 @@
+.input{
+    font-size: 16px;
+    padding: 10px;
+    background-color: transparent;
+    background-image: url(../img/search.svg);
+    background-position: 11px 11px;
+    background-repeat: no-repeat;
+    color: white;
+    width: 25px;
+    height: 25px;
+    outline: none;
+    border: 2px white solid;
+    border-radius: 35px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0 15px #9A86FD;
+    
+    transition: all 500ms;
+}
+
+.input::placeholder{
+    color: #efefef;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+}
+
+.input:focus::placeholder{
+    opacity: 1;
+}
+
+.input:hover{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0 15px #70a4ff;
+}
+
+.input:focus,
+.input:not(:placeholder-shown){
+    width: 250px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0px 15px 0 #70a4ff;
+    background-position: 235px 11px;
+}

@@ -1,7 +1,10 @@
 .cards{
+    min-width: 650px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    gap: 2em 0;
+    gap: 4em 4em;
+    position: relative;
+    right: 30%;
 }

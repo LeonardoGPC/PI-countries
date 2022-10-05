@@ -9,7 +9,7 @@ const axiosHandler = async function (){
         const paises = axi.data;
         const pais = [];
         paises.map(function (e) {
-            pais.push({ky: e.cca3, name: e.name.common, img: e.flags[1], continent: typeof e.continents === 'object' ? e.continents[0] : e.contintents, capital: e.capital ? typeof e.capital === 'object' ? e.capital[0] : e.capital : 'No tiene capital', subregion: e.subregion, area: e.area, poblation: e.population})
+            pais.push({ky: e.cca3, name: e.name.common, img: e.flags[1], continent: typeof e.continents === 'object' ? e.continents[0] : e.contintents, capital: e.capital ? typeof e.capital === 'object' ? e.capital[0] : e.capital : 'No tiene capital', subregion: e.subregion, area: e.area, population: e.population})
         })
         for(let i = 0; i < pais.length; i++){
             await Country.create(pais[i]);
