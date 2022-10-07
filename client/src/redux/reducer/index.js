@@ -55,12 +55,12 @@ const rootReducer = (state = initialState, action) => {
             if(Object.entries(action.payload).length !== 0){
                 return{
                     ...state,
-                    crt_act: action.payload
+                    crt_act: action.payload,
+                    cxa_id: []
                 }
             }
             return{ ...state }
         case ADD_ACTIVITIE:
-            console.log(state.cxa_id)
             let id;
             if(state.cxa_id.includes(action.payload)){
                 id = state.cxa_id.filter(e => e !== action.payload)
@@ -100,7 +100,7 @@ const rootReducer = (state = initialState, action) => {
             } else {
                 data = data.filter(e => e.name.toLowerCase().includes(action.payload.toLowerCase()))
                 if(data.length < 1){
-                    data = ['No pudimos encontrar ese país llamado', `${action.payload}, lo sentimos 😢`];
+                    data = ['No pudimos encontrar ese país llamado ', `${action.payload}, lo sentimos 😢`];
                     $search = true;
                     return{
                         ...state,

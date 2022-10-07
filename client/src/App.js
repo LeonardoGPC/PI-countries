@@ -2,14 +2,13 @@ import './App.css';
 import { Route } from 'react-router-dom';
 
 import Landing from './components/LandingPage/landing.jsx';
-import Activity from './components/activity';
-import Home from './components/home';
-import Nav from './components/nav';
-import Details from './components/details';
-// import Error from './components/error';
+import Activity from './components/Activity_Form/activity.jsx';
+import Home from './components/Home/home';
+import Nav from './components/Nav/nav';
+import Details from './components/Details/details';
 import bg from "./img/earth.jpg";
 import { useState } from 'react';
-import About from './components/about';
+import About from './components/About/about.jsx';
 
 function App() {
 
@@ -29,13 +28,6 @@ function App() {
         <Route exact path='/'>
           <Landing/>
         </Route>
-        {/* <Route path='/home' element={<Nav setSrch={setSrch}/>} >
-          <Route path='/home' element={<Home srch={srch} setSrch={setSrch} dtls={dtls} setDtls={setDtls}/>} >
-            <Route exact path='/home/details' element={<Details dtls={dtls}/>}/>
-          </Route>
-          <Route exact path='/home/activity' element={<Activity/>} />
-          <Route path='/home/about' element={<About/>}/>
-        </Route> */}
         <Route path='/home'>
           <Nav/>
         </Route>
@@ -47,19 +39,12 @@ function App() {
             </Route>
           </div>
         </Route>
-        {/* <Route path='/home/details'>
-          <div className='dtls_home'>
-          <Home srch={srch} setSrch={setSrch} dtls={dtls} setDtls={setDtls}/>
-          <Details dtls={dtls}/>
-          </div>
-        </Route> */}
         <Route path='/home/activity'>
           <Activity/>
         </Route>
         <Route path='/home/about'>
           <About/>
         </Route>
-        {/* <Route path='*'><Error/></Route> */}
     </div>
   );
 }

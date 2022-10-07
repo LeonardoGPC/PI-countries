@@ -53,6 +53,4 @@ router.post('/activities', async function(req, res){
     }
 })
 
-//Falta conectar las dos tablas
-
 module.exports = router;

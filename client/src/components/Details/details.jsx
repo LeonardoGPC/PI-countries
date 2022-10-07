@@ -3,7 +3,7 @@ import dtl from "./details.module.css";
 import { Link } from "react-router-dom";
 import DtlActivity from "./dtlActivity";
 import { useSelector } from "react-redux";
-import close_img from '../img/close.svg';
+import close_img from '../../img/close.svg';
 
 export default function Details(){
 

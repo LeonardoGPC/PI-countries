@@ -1,15 +1,15 @@
 import { React, useState } from "react";
 import { useDispatch } from "react-redux";
-import { pagSwitch } from "../redux/actions";
-import lfarr from "../img/left_arrow.svg";
-import rgarr from "../img/rigth_arrow.svg";
+import { pagSwitch } from "../../redux/actions";
+import lfarr from "../../img/left_arrow.svg";
+import rgarr from "../../img/rigth_arrow.svg";
 import pag from "./paginado.module.css";
 
 export default function Paginado({max, pagina}){
 
     const dispatch = useDispatch();
 
-    const [input, setInput] = useState(1)
+    const [input, setInput] = useState(pagina)
 
     max = Math.floor(max)
 

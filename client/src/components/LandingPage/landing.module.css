@@ -1,5 +1,5 @@
 .img{
-    width: 99.1vw;
+    width: 100vw;
     height: 100vh;
     object-fit: cover;
     position: absolute;
@@ -8,7 +8,7 @@
 }
 
 .div_img{
-    width: 99.1vw;
+    width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
@@ -66,7 +66,7 @@
     left: 0;
     bottom: 0em;
     height: 3px;
-    background-color: rgb(189, 0, 246);
+    background-color: #9A86FD;
     z-index: 5;
     transition: transform 580ms cubic-bezier(0.2, 0.1, 0.15, 1.32);
 }
@@ -77,7 +77,7 @@
     bottom: -50;
     left: 0;
     height: 50px;
-    background: rgb(189, 0, 246);
+    background: #9A86FD;
     z-index: -1;
     transition: transform 400ms ease;
 }

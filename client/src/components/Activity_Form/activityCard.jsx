@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import acc from "./activityCard.module.css";
-import { addActivitie } from "../redux/actions";
+import { addActivitie } from "../../redux/actions";
 
 export default function ActivityCard({name, img, id}){
 

@@ -49,20 +49,21 @@
     height: 25px;
     background: none;
     border: none;
-    border-bottom: 2px solid rgb(195, 0, 255);
+    border-bottom: 2px solid #ffffff;
+    filter: drop-shadow(0 0px 5px #9A86FD);
     transition: filter 300ms;
 
     animation: inputs 2s ease;
 }
 
 @keyframes inputs{
-    from{width: 0px; border-bottom: 2px solid rgb(48, 0, 63);}
-    to{width: 200px; border-bottom: 2px solid rgb(195, 0, 255);}
+    from{width: 0px; border-bottom: 2px solid rgb(47, 47, 47);}
+    to{width: 200px; border-bottom: 2px solid #ffffff;}
 }
 
 .inp_name:focus,
 .inp_name:hover{
-    filter: drop-shadow(0 0px 3px rgb(195, 0, 255));
+    filter: drop-shadow(0 0px 5px #70a4ff);
 }
 
 .inp_name::placeholder{ 
@@ -120,27 +121,25 @@
     outline: none;
     width: 200px;
     height: 35px;
-    background: rgb(195, 0, 255);
-    border: none;
-    border-radius: 10px;
+    background: rgb(9, 0, 34);
+    border: 2px solid white;
+    border-radius: 20px;
     text-align: center;
     cursor: pointer;
+    box-shadow: 0 0 8px #9A86FD;
     transition: box-shadow 300ms;
 
     animation: selects 2s ease;
 }
 
 @keyframes selects{
-    from{width: 0px; background: rgb(48, 0, 63);}
-    to{width: 200px; background: rgb(195, 0, 255);}
+    from{width: 0px; background: rgb(0, 0, 0);}
+    to{width: 200px; background: rgb(9, 0, 34);}
 }
 
+.select_difficult:focus,
 .select_difficult:hover{
-    box-shadow: 0 0 8px rgb(195, 0, 255);
-}
-
-.select_difficult:focus{
-    box-shadow: 0 0 8px rgb(195, 0, 255);
+    box-shadow: 0 0 8px #70a4ff;
 }
 
 .select_time{
@@ -153,9 +152,10 @@
     outline: none;
     width: 90px;
     height: 35px;
-    background: rgb(195, 0, 255);
-    border: none;
-    border-radius: 10px 0 0 10px;
+    background: rgb(10, 1, 36);
+    border:  2px solid white;
+    border-radius: 20px 10px 0 20px;
+    box-shadow: 0 0 8px #9A86FD;
     text-align: center;
     transition: box-shadow 300ms;
 
@@ -163,16 +163,13 @@
 }
 
 @keyframes selects2{
-    from{width: 0px; background: rgb(0, 0, 0);}
-    to{width: 90px; background: rgb(195, 0, 255);}
+    from{width: 0px;}
+    to{width: 90px;}
 }
 
+.select_time:focus,
 .select_time:hover{
-    box-shadow: 0 0 8px rgb(195, 0, 255);
-}
-
-.select_time:focus{
-    box-shadow: 0 0 8px rgb(195, 0, 255);
+    box-shadow: 0 0 8px #70a4ff;
 }
 
 .inp_time{
@@ -187,15 +184,16 @@
     height: 25px;
     background: none;
     border: none;
-    border-bottom: 2px solid rgb(195, 0, 255);
+    border-bottom: 2px solid #ffffff;
+    filter: drop-shadow(0 0px 5px #9A86FD);
     transition: filter 300ms;
 
     animation: inputs2 2s ease;
 }
 
 @keyframes inputs2{
-    from{width: 0px; border-bottom: 2px solid rgb(48, 0, 63);}
-    to{width: 110px; border-bottom: 2px solid rgb(195, 0, 255);}
+    from{width: 0px; border-bottom: 2px solid rgb(62, 62, 62);}
+    to{width: 110px; border-bottom: 2px solid #ffffff;}
 }
 
 .inp_time::-webkit-outer-spin-button,
@@ -206,7 +204,7 @@
 
 .inp_time:focus,
 .inp_time:hover{
-    filter: drop-shadow(0 0px 3px rgb(195, 0, 255));
+    filter: drop-shadow(0 0px 5px #70a4ff);
 }
 
 .select_season{
@@ -219,44 +217,52 @@
     outline: none;
     width: 187px;
     height: 35px;
-    background: rgb(195, 0, 255);
-    border: none;
-    border-radius: 10px;
+    background: rgb(9, 0, 34);
+    border: 2px solid white;
+    border-radius: 20px;
     text-align: center;
+    box-shadow: 0 0 8px #9A86FD;
     transition: box-shadow 300ms;
 
     animation: selects3 2s ease;
 }
 
+.select_season:focus,
+.select_season:hover{
+    box-shadow: 0 0 8px #70a4ff;
+}
+
 @keyframes selects3{
-    from{width: 0px; background: rgb(48, 0, 63);}
-    to{width: 187px; background: rgb(195, 0, 255);}
+    from{width: 0px;}
+    to{width: 187px;}
 }
 
 .inp{
+    font-size: 16px;
     position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 130px;
+    width: 35px;
     height: 35px;
     color: white;
     cursor: pointer;
     background: none;
     border-radius: 17px;
-    border: 2px solid rgb(195, 0, 255);
-    transition: border 400ms, box-shadow 400ms;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 10px #9A86FD;
+    transition: all 400ms;
 
     animation: button 2s ease;
 }
 
 @keyframes button{
-    from{width: 0px; border: 2px solid rgb(0, 0, 0);}
-    to{width: 130px; border: 2px solid rgb(50, 50, 50);}
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
 
 .inp:hover{
-    box-shadow: 0 0 15px inset rgb(195, 0, 255);
+    box-shadow: 0 0 10px #70a4ff;
 }
 
 .name_error{
@@ -327,4 +333,9 @@
 
 .country_name{
     margin: 0;
+}
+
+.paginado{
+    position: relative;
+    left: 30%;
 }

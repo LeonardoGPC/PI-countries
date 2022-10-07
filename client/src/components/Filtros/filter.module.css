@@ -1,19 +1,20 @@
 .filter{
     color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .select{
-    width: 185px;
+    width: 190px;
     color: white;
     font-size: 18px;
     padding: 5px 5px;
     outline: none;
-    background: rgba(133, 0, 173, 1);
-    border: none;
-    border-radius: 10px;
+    background: rgb(9, 0, 34);
+    border: 2px solid white;
+    border-radius: 30px;
     cursor: pointer;
+    box-shadow: 0 0 13px #9A86FD;
 
     transition: all 300ms;
 
@@ -27,6 +28,6 @@
 
 .select:focus,
 .select:hover{
-    background: rgb(173, 0, 226);
-    box-shadow: 0 0 10px rgb(195, 0, 255);
+    background: rgb(9, 0, 34);
+    box-shadow: 0 0 13px #70a4ff;
 }

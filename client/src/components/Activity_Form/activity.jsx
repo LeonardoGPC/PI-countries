@@ -2,41 +2,12 @@ import React, { useState, useEffect } from "react";
 import act from "./activity.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import ActivityCard from './activityCard.jsx';
-import { getData, getCounts, search, dltActivitie, createActivity, dltCrtAct } from '../redux/actions';
-import img_close from '../img/close.svg';
-import left_arrow from '../img/left_arrow.svg';
+import { getData, getCounts, search, dltActivitie, createActivity, dltCrtAct, getAct } from '../../redux/actions';
+import img_close from '../../img/close.svg';
+import left_arrow from '../../img/left_arrow.svg';
+import Paginado from '../Home/paginado'
 
 export default function Activity(){
-
-    // const [input, setInput] = useState({
-    //     name: '',
-    //     difficult: '',
-    //     duration: '',
-    //     season: '',
-    //     countries: ''
-    // })
-
-    // const onChange = e => {
-    //     setInput({
-    //         ...input,
-    //         [e.target.name]: e.target.value
-    //     })
-    //     console.log(input);
-    // }
-
-    // const onSubmit = async (e) => {
-    //     console.log(input)
-    //     console.log(JSON.stringify(input))
-    //     e.preventDefault();
-    //     await fetch("http://localhost:3001/activities", {
-    //         method: 'POST',
-    //         body: JSON.stringify(input),
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     }).then(res => res.json())
-    //     .then(respuesta => console.log(respuesta))
-    // }
 
     const dispatch = useDispatch();
     const data = useSelector((state) => state.datos)
@@ -44,19 +15,21 @@ export default function Activity(){
     const cxa_id = useSelector((state) => state.cxa_id)
     const error_srch = useSelector((state) => state.error)
     const crt_act = useSelector((state) => state.crt_act)
+    const acts = useSelector((state) => state.act)
 
-    // const pag = useSelector((state) => state.pag);
+    const pag = useSelector((state) => state.pag);
 
-    // const index1 = (pag * 12) - 12;
-    // const index2 = 12 + index1;
+    const index1 = (pag * 25) - 25;
+    const index2 = 25 + index1;
 
-    // const countriesRender = data.slice(index1, index2)
+    const countriesRender = data.slice(index1, index2)
 
-    // const max = (data.length / 12) + 2;
+    const max = (data.length / 25);
 
     useEffect( () => {
         dispatch(getCounts());
         dispatch(getData());
+        dispatch(getAct());
     }, [dispatch])
 
     useEffect(async () => {
@@ -76,6 +49,7 @@ export default function Activity(){
     }
 
     useEffect(() => {
+
         setError({
             ...error,
             nameErr: ['Campo', 'Obligatorio']
@@ -89,6 +63,11 @@ export default function Activity(){
             setError({
                 ...error,
                 nameErr: ['Campo', 'Obligatorio']
+            })
+        } else if(acts.find(e => e.name.toLowerCase() === name.toLowerCase())){
+            setError({
+                ...error,
+                nameErr: ['Lo sentimos 😢, ya existe', 'una actividada con ese nombre']
             })
         } else {
             setError({
@@ -128,7 +107,6 @@ export default function Activity(){
                     ...error,
                     durationErr: ['⚠️ No puedes poner','números negativos ⚠️']
                 })
-                // console.log(error.durationErr)
             } else if(duracion.value.length === 0){
                 setError({
                     ...error,
@@ -190,24 +168,21 @@ export default function Activity(){
         }
     }, [cxa_id])
 
-    const [button, setButton] = useState(true);
-    const [btnStyle, setBtnStyle] = useState({border: '2px solid rgb(50, 50, 50)', cursor: 'default'})
+    const [button, setButton] = useState({is: true, value: ''});
+    const [btnStyle, setBtnStyle] = useState({border: '3px solid rgb(50, 50, 50)', cursor: 'default'})
 
     useEffect(() => {
-        // console.log(error.nameErr.length)
-        // console.log(error.durationErr.length)
-        // console.log(error.paisesErr.length )
         if(error.nameErr.length === 0 && error.durationErr.length === 0 && name.length > 0 && duracion.value !== 0 && cxa_id.length > 0){
-            setBtnStyle({border: '2px solid rgb(195, 0, 255)', cursor: 'pointer'})
-            setButton(false)
+            setBtnStyle({border: '3px solid rgb(255, 255, 255)', cursor: 'pointer', width: '150px'})
+            setButton({is: false, value: 'Crear 🛠️'})
         } else {
-            setBtnStyle({border: '2px solid rgb(50, 50, 50)', cursor: 'default'})
-            setButton(true)
+            setBtnStyle({border: '3px solid rgb(50, 50, 50)', cursor: 'default'})
+            setButton({is: true, value: ''})
         }
     }, [error])
 
     const onSubmit = e => {
-        e.preventDefault()
+        alert(`${name} en ${e.target.season.value} se creó correctamente`)
         dispatch(createActivity({
             name: name,
             difficult: Number(e.target.difficult.value),
@@ -219,7 +194,6 @@ export default function Activity(){
 
     useEffect(() => {
         if(Object.entries(crt_act).length > 0){
-            alert(`${crt_act.name} en ${crt_act.season} se creó correctamente`)
             dispatch(dltCrtAct())
         }
     }, [crt_act])
@@ -283,9 +257,8 @@ export default function Activity(){
                     </div>
                     <div className={act.div_name_country}>
                     {cxa_id && cxa_id.map(e => <p className={act.country_name} >{countries ? countries.find(f => f.id === e).name : 'Cargando...'}</p>)}
-                    {/* {length > 22 ? countries.find(f => f.id === e).name.split(' ')[0] (countries.find(f => f.id === e).name.split(' ')[1].includes(',')) ? countries.find(f => f.id === e).name.split(' ')[1].split(',')[0] : countries.find(f => f.id === e).name.split(' ')[1] : countries.find(f => f.id === e).name} */}
                     </div>
-                    <input type="submit" className={act.inp} disabled={button} style={btnStyle}/>
+                    <input type="submit" className={act.inp} disabled={button.is} style={btnStyle} value={button.value}/>
                 </form>
                 </div>
                 {paises && <div className={"activity_cards"}>
@@ -294,8 +267,8 @@ export default function Activity(){
                             <h1 className={act.cards_title}>Selecciona los paises</h1>
                             <img src={img_close} className={act.cards_img} onClick={close} alt='Close'/>
                         </div>
-                    <div className={act.cards}>
-                    {error_srch ? <h1>{error_srch}</h1> : data ? data.map(p => 
+                    {error_srch ? <h1 className={act.error_srch}>{error_srch[0]}<br/>{error_srch[1]}</h1> : data ? <div className={act.cards}>
+                        {countriesRender.map(p => 
                         <div key={p.id}>
                             <ActivityCard
                             name={p.name}
@@ -303,13 +276,15 @@ export default function Activity(){
                             id={p.id}
                             key={p.ky}
                             />
-                        </div>) : <h1>Cargando...</h1>}
+                        </div>)}
+                        </div> : <h1>Cargando...</h1>}
+                        <div className={act.paginado}>
+                            <Paginado max={max} pagina={pag}/>
                         </div>
-                        {/* <Paginado max={max} pagina={pag}/> */}
-                        <div className={act.up_div} onClick={upFunction}>
+                        {/* <div className={act.up_div} onClick={upFunction}>
                             <img className={act.up} src={left_arrow} alt='Up_Arrow'/>
                             <p className={act.up_txt}>Ir arriba</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>}
             </div>

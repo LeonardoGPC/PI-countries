@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { viewDetails } from "../redux/actions";
+import { viewDetails } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import cds from "./card.module.css";
 

@@ -1,5 +1,5 @@
 import { React } from "react";
-import { search } from "../redux/actions";
+import { search } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import sb from './searchBar.module.css';
 

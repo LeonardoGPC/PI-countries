@@ -37,7 +37,7 @@ export default function Filter(){
                 </optgroup>
             </select>
 
-            {act.length > 0 ? 
+            {act.length > 0 && 
              <select defaultValue='default' onChange={e => onActivities(e)} className={f.select}>
                 <option value='default' disabled>Filtrar actividades</option>
                 <option value='All'>Todas</option>
@@ -48,9 +48,9 @@ export default function Filter(){
                         </option>
                     )}
                 </optgroup>
-             </select>
-            : <select defaultValue='default' disabled className={f.select}><option value='default'>No hay actividades</option></select>
-            }
+             </select> }
+            {/* : <select defaultValue='default' disabled className={f.select}><option value='default'>No hay actividades</option></select>
+            } */}
 
             <select defaultValue={'default'} onChange={e => onOrder(e)} className={f.select}>
                 <option value='default' disabled>Ordenar por</option>

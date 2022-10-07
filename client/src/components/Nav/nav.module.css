@@ -23,7 +23,7 @@
 .title::after{
     content: '';
     position: absolute;
-    background-color: rgba(133, 0, 173, 1);
+    background-color: #9A86FD;
     bottom: 0;
     left: 5%;
     width: 97%;
@@ -60,7 +60,7 @@
 .link::after{
     content: '';
     position: absolute;
-    background-color: rgba(133, 0, 173, 1);
+    background-color: #9A86FD;
     bottom: 0;
     left: 10%;
     width: 80%;

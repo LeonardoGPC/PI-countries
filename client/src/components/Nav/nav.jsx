@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import lp from "../img/LP.png";
+import lp from "../../img/LP.png";
 import SearchBar from "./searchBar";
 import n from "./nav.module.css";
 
