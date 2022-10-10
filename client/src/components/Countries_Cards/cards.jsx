@@ -20,16 +20,16 @@ export default function Cards(){
     return(
         <div>
             <div className={c.cards}>
-                {countriesRender ? countriesRender.map(e => 
+                {data ? countriesRender.map(e => 
                 <Card
                 name={e.name}
                 img={e.img}
                 continent={e.continent}
                 ky={e.ky}
                 key={e.id}
-                />) : <h1>Cargando...</h1>}
+                />) : <h1 style={{color: 'white'}}>Cargando...</h1>}
             </div>
-            <Paginado max={max} pagina={pag} />
+            <Paginado max={max}/>
         </div>
     )
 }

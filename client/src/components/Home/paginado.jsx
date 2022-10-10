@@ -1,29 +1,38 @@
-import { React, useState } from "react";
-import { useDispatch } from "react-redux";
-import { pagSwitch } from "../../redux/actions";
+import { React, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { pagSwitch, resetPag, setPagInput } from "../../redux/actions";
 import lfarr from "../../img/left_arrow.svg";
 import rgarr from "../../img/rigth_arrow.svg";
 import pag from "./paginado.module.css";
 
-export default function Paginado({max, pagina}){
+export default function Paginado({max}){
 
     const dispatch = useDispatch();
+    const pagina = useSelector((state) => state.pag);
+    const input = useSelector((state) => state.pagInput);
 
-    const [input, setInput] = useState(pagina)
+    // const [input, setInput] = useState(pagina)
 
-    max = Math.floor(max)
+    useEffect(() => {
+        dispatch(resetPag(1))
+        // setInput(pagina)
+    }, [dispatch])
+
+    max = Math.ceil(max)
 
     const movePagI = ()=>{
         if(pagina !== 1){
-            setInput(parseInt(input) - 1)
+            // setInput(parseInt(input) - 1)
             dispatch(pagSwitch(pagina - 1));
+            dispatch(setPagInput(parseInt(input) - 1));
         }
     }
 
     const movePagD = ()=>{
         if(pagina !== max){
-            setInput(parseInt(input) + 1)
+            // setInput(parseInt(input) + 1)
             dispatch(pagSwitch(pagina + 1));
+            dispatch(setPagInput(parseInt(input) + 1));
         }
     }
 
@@ -42,7 +51,7 @@ export default function Paginado({max, pagina}){
     }
 
     const onChange = e => {
-        setInput(e.target.value)
+        dispatch(setPagInput(e.target.value));
     }
 
     return(

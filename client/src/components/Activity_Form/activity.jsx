@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import act from "./activity.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import ActivityCard from './activityCard.jsx';
-import { getData, getCounts, search, dltActivitie, createActivity, dltCrtAct, getAct } from '../../redux/actions';
+import { getData, getCounts, search, dltActivitie, createActivity, dltCrtAct, getAct, resetPag } from '../../redux/actions';
 import img_close from '../../img/close.svg';
-import left_arrow from '../../img/left_arrow.svg';
+// import left_arrow from '../../img/left_arrow.svg';
 import Paginado from '../Home/paginado'
+import Loader from "../Loading/loading";
 
 export default function Activity(){
 
@@ -26,13 +27,14 @@ export default function Activity(){
 
     const max = (data.length / 25);
 
-    useEffect( () => {
+    useEffect(() => {
         dispatch(getCounts());
+        dispatch(resetPag(1))
         dispatch(getData());
         dispatch(getAct());
     }, [dispatch])
 
-    useEffect(async () => {
+    useEffect(() => {
         dispatch(dltActivitie())
     }, [])
 
@@ -146,6 +148,7 @@ export default function Activity(){
 
     const paisesTyping = e => {
         dispatch(search(e.target.value))
+        dispatch(resetPag(1))
     }
 
     const close = () => {
@@ -267,7 +270,7 @@ export default function Activity(){
                             <h1 className={act.cards_title}>Selecciona los paises</h1>
                             <img src={img_close} className={act.cards_img} onClick={close} alt='Close'/>
                         </div>
-                    {error_srch ? <h1 className={act.error_srch}>{error_srch[0]}<br/>{error_srch[1]}</h1> : data ? <div className={act.cards}>
+                    {error_srch ? <h1 className={act.error_srch}>{error_srch[0]}<br/>{error_srch[1]}</h1> : data.length > 0 ? <div className={act.cards}>
                         {countriesRender.map(p => 
                         <div key={p.id}>
                             <ActivityCard
@@ -277,7 +280,7 @@ export default function Activity(){
                             key={p.ky}
                             />
                         </div>)}
-                        </div> : <h1>Cargando...</h1>}
+                        </div> : <Loader/>}
                         <div className={act.paginado}>
                             <Paginado max={max} pagina={pag}/>
                         </div>

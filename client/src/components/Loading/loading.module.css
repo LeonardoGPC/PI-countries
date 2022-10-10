@@ -1,0 +1,30 @@
+.loader{
+    display: inline-block;
+    width: 250px;
+    height: 20px;
+    border-radius: 40px;
+    background-color: rgba(2500, 255, 255, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.loader::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 140%;
+    height: 100%;
+    background-image: linear-gradient(332deg, #6b70ff, #f8adff);
+    border-radius: inherit;
+    transform: scaleX(0.3);
+    transform-origin: left;
+    animation: scale 1.5s infinite;
+}
+
+@keyframes scale{
+    25%{ transform: scaleX(0.4)}
+    50%{ transform: scaleX(0.3); transform-origin: right;}
+    75%{ transform: scaleX(0.4)}
+    100%{ transform: scaleX(0.3); transform-origin: left;}
+}

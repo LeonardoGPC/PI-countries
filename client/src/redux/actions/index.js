@@ -12,6 +12,8 @@ export const ADD_ACTIVITIE = 'ADD_ACTIVITIE';
 export const DLT_ACTIVITIE = 'DLT_ACTIVITIE';
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
 export const DLT_CRT_ACT = 'DLT_CRT_ACT';
+export const RESET_PAG = 'RESET_PAG';
+export const SET_PAG_INPUT = 'SET_PAG_INPUT';
 
 export const getCounts = () => {
     return function (dispatch){
@@ -74,6 +76,10 @@ export const createActivity = input => {
     }
 }
 
+export const setPagInput = (value) => {
+    return {type: SET_PAG_INPUT, payload: value}
+}
+
 export const dltCrtAct = () => {
     return {type: DLT_CRT_ACT}
 }
@@ -108,5 +114,8 @@ export const filterActivitie = (activitie) => {
 
 export const orderBy = (order) => {
     return { type: ORDER_BY, payload: order }
-  
 };
+
+export const resetPag = (num) => {
+    return {type: RESET_PAG, payload: num}
+}

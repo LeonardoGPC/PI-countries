@@ -1,4 +1,4 @@
-import { ORDER_BY, GET_DATA, GET_CXA, GET_ACT, FILTER_CONTINENT, FILTER_ACTIVITIE, GET_COUNTS, SEARCH, VIEW_DETAILS, PAG_SWITCH, ADD_ACTIVITIE, DLT_ACTIVITIE, CREATE_ACTIVITY, DLT_CRT_ACT } from "../actions";
+import { ORDER_BY, GET_DATA, GET_CXA, GET_ACT, FILTER_CONTINENT, FILTER_ACTIVITIE, GET_COUNTS, SEARCH, VIEW_DETAILS, PAG_SWITCH, ADD_ACTIVITIE, DLT_ACTIVITIE, CREATE_ACTIVITY, DLT_CRT_ACT, RESET_PAG, SET_PAG_INPUT } from "../actions";
 
 const initialState = {
     counts: [],
@@ -9,6 +9,7 @@ const initialState = {
     dtls: false,
     error: false,
     pag: 1,
+    pagInput: 1,
     perPage: 9,
     cxa_id: [],
     crt_act: {},
@@ -50,6 +51,17 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 crt_act: {}
+            }
+        case RESET_PAG:
+            return{
+                ...state,
+                pag: action.payload,
+                pagInput: action.payload
+            }
+        case SET_PAG_INPUT:
+            return{
+                ...state,
+                pagInput: action.payload
             }
         case CREATE_ACTIVITY:
             if(Object.entries(action.payload).length !== 0){

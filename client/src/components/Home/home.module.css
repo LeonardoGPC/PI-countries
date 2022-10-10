@@ -49,3 +49,9 @@
     right: 30%;
     color: white;
 }
+
+.loader{
+    padding: 0 200px;
+    position: relative;
+    right: 30%;
+}
